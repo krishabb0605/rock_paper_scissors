@@ -21,6 +21,34 @@ const Game = () => {
     }, 1000);
   }, []);
 
+  const compare = (data, randomElement) => {
+    if (randomElement == data) {
+      return 'draw';
+    } else if (data === 'rock') {
+      if (randomElement === 'scissor') {
+        return 'rock';
+      } else {
+        return 'paper';
+      }
+    } else if (data === 'paper') {
+      if (randomElement === 'rock') {
+        return 'paper';
+      } else {
+        return 'scissor';
+      }
+    } else if (data === 'scissor') {
+      if (randomElement === 'rock') {
+        return 'rock';
+      } else {
+        return 'scissor';
+      }
+    }
+  };
+
+  if (randomElement) {
+    const data1 = compare(data, randomElement);
+    console.log('data :', data1);
+  }
   return (
     <Box>
       <Flex
