@@ -10,7 +10,7 @@ const Layout = () => {
   return (
     <Box pos='relative' width={{ base: '70%', sm: '100%' }}>
       <Image src={triangle} width='100%' />
-      <NavLink to='/game'>
+      <NavLink to='/game' state={{ data: 'paper' }}>
         <Box
           p='24px'
           borderRadius='50%'
@@ -36,7 +36,7 @@ const Layout = () => {
         </Box>
       </NavLink>
 
-      <NavLink to='/game'>
+      <NavLink to='/game' state={{ data: 'scissor' }}>
         <Box
           p='24px'
           borderRadius='50%'
@@ -61,7 +61,8 @@ const Layout = () => {
           </Box>
         </Box>
       </NavLink>
-      <NavLink to='/game'>
+
+      <NavLink to='/game' state={{ data: 'rock' }}>
         <Box
           p='24px'
           borderRadius='50%'

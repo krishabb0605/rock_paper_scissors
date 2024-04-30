@@ -14,10 +14,12 @@ import logo from './../../assets/logo.svg';
 import close from './../../assets/icon-close.svg';
 import rules from './../../assets/image-rules.svg';
 import { Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/global.context';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { winningCount } = useContext(GlobalContext);
   return (
     <Flex
       backgroundColor='game.radial.bg'
@@ -52,7 +54,7 @@ function App() {
             SCORE
           </Text>
           <Text color='game.text.dark' fontWeight='700' fontSize='40px'>
-            12
+            {winningCount}
           </Text>
         </Flex>
       </Flex>
@@ -98,7 +100,11 @@ function App() {
               <Text color='game.radial.bg' fontSize='32px'>
                 RULES
               </Text>
-              <Box onClick={onClose} display={{ base: 'none', sm: 'block' }}>
+              <Box
+                onClick={onClose}
+                display={{ base: 'none', sm: 'block' }}
+                cursor='pointer'
+              >
                 <Image src={close} />
               </Box>
             </Flex>
