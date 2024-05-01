@@ -10,6 +10,7 @@ const posibilityArray = ['paper', 'rock', 'scissor'];
 
 const Game = () => {
   const [randomElement, setRandomElement] = useState(null);
+  const [winner, setWinner] = useState(null);
   const { state } = useLocation();
   const data = state.data;
 
@@ -22,33 +23,48 @@ const Game = () => {
   }, []);
 
   const compare = (data, randomElement) => {
-    if (randomElement == data) {
-      return 'draw';
+    if (randomElement === data) {
+      return 2;
     } else if (data === 'rock') {
       if (randomElement === 'scissor') {
-        return 'rock';
+        return 0;
       } else {
-        return 'paper';
+        return 1;
       }
     } else if (data === 'paper') {
       if (randomElement === 'rock') {
-        return 'paper';
+        return 0;
       } else {
-        return 'scissor';
+        return 1;
       }
     } else if (data === 'scissor') {
       if (randomElement === 'rock') {
-        return 'rock';
+        return 1;
       } else {
-        return 'scissor';
+        return 0;
       }
     }
   };
+  useEffect(() => {
+    if (randomElement) {
+      const data1 = compare(data, randomElement);
+      if (data1 === 0) {
+        // console.log('YOU WIN');
+        setWinner('win');
+      } else if (data1 === 1) {
+        // console.log('YOU LOSE');
+        setWinner('lose');
+      } else {
+        // console.log('draw');
+        setWinner(`IT'S DRAW`);
+      }
+    }
+  }, [randomElement]);
 
-  if (randomElement) {
-    const data1 = compare(data, randomElement);
-    console.log('data :', data1);
-  }
+  useEffect(() => {
+    console.log('RESULT : ', winner);
+  }, [winner]);
+
   return (
     <Box>
       <Flex
