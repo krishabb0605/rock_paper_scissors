@@ -13,9 +13,9 @@ import {
 import logo from './../../assets/logo.svg';
 import close from './../../assets/icon-close.svg';
 import rules from './../../assets/image-rules.svg';
-import { Outlet } from 'react-router-dom';
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/global.context';
+import Layout from '../Layout';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -63,11 +63,11 @@ function App() {
 
       <Flex flex='1' alignItems='center' flexDir='column' width='100%'>
         <Flex flex='1' alignItems='center' justifyContent='center'>
-          <Outlet />
+          <Layout />
         </Flex>
         <Flex
           width='100%'
-          justifyContent={{ base: 'center', sm: 'end' }}
+          justifyContent={{ base: 'space-evenly', sm: 'end' }}
           margin={{ base: '0px 0 32px 0px', sm: '0px 60px 32px 0px' }}
           gap='8px'
         >
