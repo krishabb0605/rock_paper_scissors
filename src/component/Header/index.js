@@ -19,13 +19,15 @@ import { GlobalContext } from '../../context/global.context';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { winningCount } = useContext(GlobalContext);
+  const { winningCount, handleCount } = useContext(GlobalContext);
+
   return (
     <Flex
       backgroundColor='game.radial.bg'
       color='white'
       h='100vh'
       w='100vw'
+      overflow='hidden'
       flexDir='column'
       alignItems='center'
       p='60px 0px 0px 0px'
@@ -66,8 +68,22 @@ function App() {
         <Flex
           width='100%'
           justifyContent={{ base: 'center', sm: 'end' }}
-          margin={{ base: '0px 0 32px 0px', sm: '0pc 60px 32px 0px' }}
+          margin={{ base: '0px 0 32px 0px', sm: '0px 60px 32px 0px' }}
+          gap='8px'
         >
+          <Text
+            padding='8px 40px'
+            fontWeight='600'
+            border='3px solid'
+            borderColor='game.text.header'
+            borderRadius='8px'
+            fontSize={{ base: '16px' }}
+            onClick={() => handleCount('reset')}
+            cursor='pointer'
+            zIndex='1'
+          >
+            RESTART
+          </Text>
           <Text
             padding='8px 40px'
             fontWeight='600'
@@ -77,6 +93,7 @@ function App() {
             fontSize={{ base: '16px' }}
             onClick={onOpen}
             cursor='pointer'
+            zIndex='1'
           >
             RULES
           </Text>
