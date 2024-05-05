@@ -4,7 +4,7 @@ export const GlobalContext = createContext();
 
 const GlobalContextProvider = (props) => {
   const [winningCount, setWinnignCount] = useState(
-    JSON.parse(localStorage.getItem('winningCount'))
+    JSON.parse(localStorage.getItem('winningCount') || 0)
   );
 
   const [isOpen, setIsOpen] = useState([false, '']);
