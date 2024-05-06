@@ -10,7 +10,11 @@ const GlobalContextProvider = (props) => {
   const [isOpen, setIsOpen] = useState([false, '']);
 
   const handleOpen = (isopen, value) => {
-    setIsOpen([isopen, value]);
+    isopen
+      ? setTimeout(() => {
+          setIsOpen([isopen, value]);
+        }, 500)
+      : setIsOpen([isopen, value]);
   };
 
   const handleCount = (result) => {

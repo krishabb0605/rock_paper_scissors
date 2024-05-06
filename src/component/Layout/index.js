@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import rock from './../../assets/icon-rock.svg';
 import paper from './../../assets/icon-paper.svg';
@@ -6,15 +6,24 @@ import scissor from './../../assets/icon-scissors.svg';
 import triangle from './../../assets/bg-triangle.svg';
 import Game from '../Game';
 import { GlobalContext } from '../../context/global.context';
+import './../../App.css';
 
 const Layout = () => {
   const { handleOpen, isOpen } = useContext(GlobalContext);
+  const [ab, setAb] = useState(false);
+  useEffect(() => {
+    isOpen[0] && setAb(false);
+  }, [isOpen]);
 
   return (
     <Flex justifyContent='center'>
       {!isOpen[0] && (
         <Box pos='relative' width={{ base: '70%', sm: '100%' }}>
-          <Image src={triangle} width='100%' />
+          <Image
+            src={triangle}
+            width='100%'
+            visibility={ab ? 'hidden' : 'visible'}
+          />
           <Box
             p='24px'
             borderRadius='50%'
@@ -24,7 +33,11 @@ const Layout = () => {
             left='0px'
             transform='translate(-50%,-50%)'
             boxShadow='inset 0px -10px 12px 0px hsl(234, 55%, 35%)'
-            onClick={() => handleOpen(true, 'paper')}
+            onClick={() => {
+              handleOpen(true, 'paper');
+              setAb(true);
+            }}
+            className={ab && 'a1'}
             cursor='pointer'
           >
             <Box
@@ -50,7 +63,11 @@ const Layout = () => {
             right='0px'
             transform='translate(50%,-50%)'
             boxShadow='inset 0px -10px 12px 4px hsl(23, 60%, 47%)'
-            onClick={() => handleOpen(true, 'scissor')}
+            onClick={() => {
+              handleOpen(true, 'scissor');
+              setAb(true);
+            }}
+            className={ab && 'a2'}
             cursor='pointer'
           >
             <Box
@@ -76,7 +93,11 @@ const Layout = () => {
             left='50%'
             transform='translate(-50%,50%)'
             boxShadow='inset 0px -10px 12px 4px hsl(338, 100%, 30%)'
-            onClick={() => handleOpen(true, 'rock')}
+            onClick={() => {
+              handleOpen(true, 'rock');
+              setAb(true);
+            }}
+            className={ab && 'a3'}
             cursor='pointer'
           >
             <Box

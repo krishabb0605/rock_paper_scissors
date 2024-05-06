@@ -9,3 +9,42 @@
     opacity: 1;
   }
 }
+
+.a1 {
+  animation: hey 1s;
+}
+
+@keyframes hey {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-500%, -50%);
+  }
+}
+
+.a2 {
+  animation: hey2 1s;
+}
+
+@keyframes hey2 {
+  from {
+    transform: translate(50%, -50%);
+  }
+  to {
+    transform: translate(500%, -50%);
+  }
+}
+
+.a3 {
+  animation: hey3 1s;
+}
+
+@keyframes hey3 {
+  from {
+    transform: translate(-50%, 50%);
+  }
+  to {
+    transform: translate(-50%, 500%);
+  }
+}
