@@ -1,0 +1,11 @@
+.bgAnimation {
+  animation: animated 0.5s;
+}
+@keyframes animated {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -8,7 +8,6 @@ import Game from '../Game';
 import { GlobalContext } from '../../context/global.context';
 
 const Layout = () => {
-  // const [isOpen, setIsOpen] = useState([false, '']);
   const { handleOpen, isOpen } = useContext(GlobalContext);
 
   return (
