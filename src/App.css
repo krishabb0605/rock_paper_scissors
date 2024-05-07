@@ -10,11 +10,11 @@
   }
 }
 
-.a1 {
-  animation: hey 1s;
+.animatePaperRegular {
+  animation: animatePaperRegular 1s;
 }
 
-@keyframes hey {
+@keyframes animatePaperRegular {
   from {
     transform: translate(-50%, -50%);
   }
@@ -23,11 +23,11 @@
   }
 }
 
-.a2 {
-  animation: hey2 1s;
+.animateScissorRegular {
+  animation: animateScissorRegular 1s;
 }
 
-@keyframes hey2 {
+@keyframes animateScissorRegular {
   from {
     transform: translate(50%, -50%);
   }
@@ -36,15 +36,79 @@
   }
 }
 
-.a3 {
-  animation: hey3 1s;
+.animateRockRegular {
+  animation: animateRockRegular 1s;
 }
 
-@keyframes hey3 {
+@keyframes animateRockRegular {
   from {
     transform: translate(-50%, 50%);
   }
   to {
     transform: translate(-50%, 500%);
+  }
+}
+
+/* ***************************** */
+
+.scissorAnimation {
+  animation: scissorAnimation 1s;
+}
+
+@keyframes scissorAnimation {
+  from {
+    transform: translate(50%, -50%);
+  }
+  to {
+    transform: translate(50%, -500%);
+  }
+}
+.animationPaper {
+  animation: animationPaper 1s;
+}
+
+@keyframes animationPaper {
+  from {
+    transform: translate(50%, -50%);
+  }
+  to {
+    transform: translate(500%, -500%);
+  }
+}
+
+.animationRock {
+  animation: animationRock 1s;
+}
+
+@keyframes animationRock {
+  from {
+    transform: translate(100%, 50%);
+  }
+  to {
+    transform: translate(500%, 500%);
+  }
+}
+.animationSpock {
+  animation: animationSpock 1s;
+}
+
+@keyframes animationSpock {
+  from {
+    transform: translate(-50%, 50%);
+  }
+  to {
+    transform: translate(-500%, -500%);
+  }
+}
+.animationLizard {
+  animation: animationLizard 1s;
+}
+
+@keyframes animationLizard {
+  from {
+    transform: translate(-50%, 50%);
+  }
+  to {
+    transform: translate(-500%, 500%);
   }
 }

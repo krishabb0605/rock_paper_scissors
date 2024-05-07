@@ -8,7 +8,7 @@ import Game from '../Game';
 import { GlobalContext } from '../../context/global.context';
 import './../../App.css';
 
-const Layout = () => {
+const LayoutRegular = () => {
   const { handleOpen, isOpen } = useContext(GlobalContext);
   const [ab, setAb] = useState(false);
   useEffect(() => {
@@ -25,7 +25,7 @@ const Layout = () => {
             visibility={ab ? 'hidden' : 'visible'}
           />
           <Box
-            p='24px'
+            p={{ base: '16px', sm: '24px' }}
             borderRadius='50%'
             backgroundColor='game.icons.paper'
             pos='absolute'
@@ -37,11 +37,11 @@ const Layout = () => {
               handleOpen(true, 'paper');
               setAb(true);
             }}
-            className={ab && 'a1'}
+            className={ab && 'animatePaperRegular'}
             cursor='pointer'
           >
             <Box
-              p='20px'
+              p={{ base: '16px', sm: '20px' }}
               backgroundColor='white'
               borderRadius='50%'
               boxShadow='inset 0px 8px 8px 0px #a29999c9'
@@ -55,7 +55,7 @@ const Layout = () => {
           </Box>
 
           <Box
-            p='24px'
+            p={{ base: '16px', sm: '24px' }}
             borderRadius='50%'
             backgroundColor='game.icons.scissor'
             pos='absolute'
@@ -67,11 +67,11 @@ const Layout = () => {
               handleOpen(true, 'scissor');
               setAb(true);
             }}
-            className={ab && 'a2'}
+            className={ab && 'animateScissorRegular'}
             cursor='pointer'
           >
             <Box
-              p='20px'
+              p={{ base: '16px', sm: '20px' }}
               backgroundColor='white'
               borderRadius='50%'
               boxShadow='inset 0px 8px 8px 0px #a29999c9'
@@ -85,7 +85,7 @@ const Layout = () => {
           </Box>
 
           <Box
-            p='24px'
+            p={{ base: '16px', sm: '24px' }}
             borderRadius='50%'
             backgroundColor='game.icons.rock'
             pos='absolute'
@@ -97,11 +97,11 @@ const Layout = () => {
               handleOpen(true, 'rock');
               setAb(true);
             }}
-            className={ab && 'a3'}
+            className={ab && 'animateRockRegular'}
             cursor='pointer'
           >
             <Box
-              p='20px'
+              p={{ base: '16px', sm: '20px' }}
               backgroundColor='white'
               borderRadius='50%'
               boxShadow='inset 0px 8px 8px 0px #a29999c9'
@@ -120,4 +120,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LayoutRegular;

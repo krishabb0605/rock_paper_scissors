@@ -1,6 +1,7 @@
 import {
   Box,
   Flex,
+  Icon,
   Image,
   Modal,
   ModalContent,
@@ -12,14 +13,23 @@ import {
 } from '@chakra-ui/react';
 import logo from './../../assets/logo.svg';
 import close from './../../assets/icon-close.svg';
-import rules from './../../assets/image-rules.svg';
+import rulesRegular from './../../assets/image-rules.svg';
+import rulesBonus from './../../assets/image-rules-bonus.svg';
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/global.context';
-import Layout from '../Layout';
+import LayoutRegular from '../LayoutRegular';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import LayoutBonus from '../LayoutBonus';
+import { VscDebugRestart } from 'react-icons/vsc';
+import { IoHome } from 'react-icons/io5';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { winningCount, handleCount } = useContext(GlobalContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isRegular = location.pathname.includes('/regular');
 
   return (
     <Flex
@@ -63,7 +73,7 @@ function App() {
 
       <Flex flex='1' alignItems='center' flexDir='column' width='100%'>
         <Flex flex='1' alignItems='center' justifyContent='center'>
-          <Layout />
+          {isRegular ? <LayoutRegular /> : <LayoutBonus />}
         </Flex>
         <Flex
           width='100%'
@@ -71,8 +81,22 @@ function App() {
           margin={{ base: '0px 0 32px 0px', sm: '0px 60px 32px 0px' }}
           gap='8px'
         >
-          <Text
-            padding='8px 40px'
+          <Flex
+            padding='8px 12px'
+            fontWeight='600'
+            border='3px solid'
+            borderColor='game.text.header'
+            borderRadius='8px'
+            fontSize={{ base: '16px' }}
+            cursor='pointer'
+            zIndex='1'
+            alignItems='center'
+            onClick={() => navigate('/')}
+          >
+            <Icon as={IoHome} />
+          </Flex>
+          <Flex
+            padding='8px 12px'
             fontWeight='600'
             border='3px solid'
             borderColor='game.text.header'
@@ -80,10 +104,11 @@ function App() {
             fontSize={{ base: '16px' }}
             onClick={() => handleCount('reset')}
             cursor='pointer'
+            alignItems='center'
             zIndex='1'
           >
-            RESTART
-          </Text>
+            <Icon as={VscDebugRestart} />
+          </Flex>
           <Text
             padding='8px 40px'
             fontWeight='600'
@@ -128,7 +153,7 @@ function App() {
           </ModalHeader>
 
           <Flex justifyContent='center' p='12px 0 30px 0'>
-            <Image src={rules} />
+            <Image src={isRegular ? rulesRegular : rulesBonus} />
           </Flex>
 
           <ModalFooter display={{ base: 'block', sm: 'none' }}>
