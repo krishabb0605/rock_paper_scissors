@@ -18,7 +18,7 @@ import rulesBonus from './../../assets/image-rules-bonus.svg';
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/global.context';
 import LayoutRegular from '../LayoutRegular';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LayoutBonus from '../LayoutBonus';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { IoHome } from 'react-icons/io5';
@@ -35,7 +35,7 @@ function App() {
     <Flex
       backgroundColor='game.radial.bg'
       color='white'
-      h='100vh'
+      h={window.innerHeight}
       w='100vw'
       overflow='hidden'
       flexDir='column'

@@ -7,7 +7,7 @@ import LayoutBonus from '../LayoutBonus';
 
 const Selection = () => {
   return (
-    <Box bg='game.radial.bg' h='100vh' w='100vw'>
+    <Box bg='game.radial.bg' h={window.innerHeight} w='100vw' overflow='hidden'>
       <Flex
         alignItems='center'
         justifyContent='space-evenly'
@@ -29,7 +29,7 @@ const Selection = () => {
               borderRadius='8px'
               fontSize={{ base: '16px' }}
               zIndex='1'
-              display={{ base: 'none', sm: 'block' }}
+              display={{ base: 'none', md: 'block' }}
             >
               Regular
             </Text>
@@ -69,7 +69,7 @@ const Selection = () => {
               borderRadius='8px'
               fontSize={{ base: '16px' }}
               zIndex='1'
-              display={{ base: 'none', sm: 'block' }}
+              display={{ base: 'none', md: 'block' }}
             >
               Bonus
             </Text>
