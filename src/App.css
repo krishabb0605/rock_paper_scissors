@@ -112,3 +112,29 @@
     transform: translate(-500%, 500%);
   }
 }
+
+.opactiyDecrease {
+  animation: opactiyDecrease 1s forwards;
+}
+
+@keyframes opactiyDecrease {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.opactiyIncrease {
+  animation: opactiyIncrease 1s forwards;
+}
+
+@keyframes opactiyIncrease {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -20,14 +20,16 @@ const GlobalContextProvider = (props) => {
     }
   }, [location]);
 
-  const [isOpen, setIsOpen] = useState([false, '']);
+  const [isGameOpen, setIsGameOpen] = useState([false, '']);
+  const [instantChange, setInstantChange] = useState(false);
 
   const handleOpen = (isopen, value) => {
+    isopen ? setInstantChange(true) : setInstantChange(false);
     isopen
       ? setTimeout(() => {
-          setIsOpen([isopen, value]);
+          setIsGameOpen([isopen, value]);
         }, 500)
-      : setIsOpen([isopen, value]);
+      : setIsGameOpen([isopen, value]);
   };
 
   const handleCount = (result) => {
@@ -54,7 +56,8 @@ const GlobalContextProvider = (props) => {
       value={{
         winningCount,
         handleCount,
-        isOpen,
+        isGameOpen,
+        instantChange,
         handleOpen,
       }}
     >

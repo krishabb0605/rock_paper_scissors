@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import rock from './../../assets/icon-rock.svg';
 import paper from './../../assets/icon-paper.svg';
@@ -11,21 +11,16 @@ import { GlobalContext } from '../../context/global.context';
 import './../../App.css';
 
 const LayoutBonus = () => {
-  const { handleOpen, isOpen } = useContext(GlobalContext);
-  const [ab, setAb] = useState(false);
-
-  useEffect(() => {
-    isOpen[0] && setAb(false);
-  }, [isOpen]);
+  const { handleOpen, isGameOpen, instantChange } = useContext(GlobalContext);
 
   return (
     <Flex justifyContent='center'>
-      {!isOpen[0] && (
+      {!isGameOpen[0] && (
         <Box pos='relative' width={{ base: '70%', sm: '100%' }}>
           <Image
             src={pentagon}
             width='100%'
-            visibility={ab ? 'hidden' : 'visible'}
+            visibility={instantChange ? 'hidden' : 'visible'}
           />
           <Box
             p={{ base: '16px', sm: '24px' }}
@@ -38,9 +33,8 @@ const LayoutBonus = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(23, 60%, 47%)'
             onClick={() => {
               handleOpen(true, 'scissor');
-              setAb(true);
             }}
-            className={ab && 'scissorAnimation'}
+            className={instantChange && 'scissorAnimation'}
             cursor='pointer'
           >
             <Box
@@ -68,9 +62,8 @@ const LayoutBonus = () => {
             boxShadow='inset 0px -10px 12px 0px hsl(234, 55%, 35%)'
             onClick={() => {
               handleOpen(true, 'paper');
-              setAb(true);
             }}
-            className={ab && 'animationPaper'}
+            className={instantChange && 'animationPaper'}
             cursor='pointer'
           >
             <Box
@@ -98,9 +91,8 @@ const LayoutBonus = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(338, 100%, 30%)'
             onClick={() => {
               handleOpen(true, 'rock');
-              setAb(true);
             }}
-            className={ab && 'animationRock'}
+            className={instantChange && 'animationRock'}
             cursor='pointer'
           >
             <Box
@@ -128,9 +120,8 @@ const LayoutBonus = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(270, 100%, 30%)'
             onClick={() => {
               handleOpen(true, 'lizard');
-              setAb(true);
             }}
-            className={ab && 'animationLizard'}
+            className={instantChange && 'animationLizard'}
             cursor='pointer'
           >
             <Box
@@ -158,9 +149,8 @@ const LayoutBonus = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(200, 100%, 30%)'
             onClick={() => {
               handleOpen(true, 'spock');
-              setAb(true);
             }}
-            className={ab && 'animationSpock'}
+            className={instantChange && 'animationSpock'}
             cursor='pointer'
           >
             <Box
@@ -178,7 +168,7 @@ const LayoutBonus = () => {
           </Box>
         </Box>
       )}
-      {isOpen[0] && <Game />}
+      {isGameOpen[0] && <Game />}
     </Flex>
   );
 };

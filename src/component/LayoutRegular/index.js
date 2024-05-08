@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Box, Flex, Image } from '@chakra-ui/react';
 import rock from './../../assets/icon-rock.svg';
 import paper from './../../assets/icon-paper.svg';
@@ -9,20 +9,16 @@ import { GlobalContext } from '../../context/global.context';
 import './../../App.css';
 
 const LayoutRegular = () => {
-  const { handleOpen, isOpen } = useContext(GlobalContext);
-  const [ab, setAb] = useState(false);
-  useEffect(() => {
-    isOpen[0] && setAb(false);
-  }, [isOpen]);
+  const { handleOpen, isGameOpen, instantChange } = useContext(GlobalContext);
 
   return (
     <Flex justifyContent='center'>
-      {!isOpen[0] && (
+      {!isGameOpen[0] && (
         <Box pos='relative' width={{ base: '70%', sm: '100%' }}>
           <Image
             src={triangle}
             width='100%'
-            visibility={ab ? 'hidden' : 'visible'}
+            visibility={instantChange ? 'hidden' : 'visible'}
           />
           <Box
             p={{ base: '16px', sm: '24px' }}
@@ -35,9 +31,8 @@ const LayoutRegular = () => {
             boxShadow='inset 0px -10px 12px 0px hsl(234, 55%, 35%)'
             onClick={() => {
               handleOpen(true, 'paper');
-              setAb(true);
             }}
-            className={ab && 'animatePaperRegular'}
+            className={instantChange && 'animatePaperRegular'}
             cursor='pointer'
           >
             <Box
@@ -65,9 +60,8 @@ const LayoutRegular = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(23, 60%, 47%)'
             onClick={() => {
               handleOpen(true, 'scissor');
-              setAb(true);
             }}
-            className={ab && 'animateScissorRegular'}
+            className={instantChange && 'animateScissorRegular'}
             cursor='pointer'
           >
             <Box
@@ -95,9 +89,8 @@ const LayoutRegular = () => {
             boxShadow='inset 0px -10px 12px 4px hsl(338, 100%, 30%)'
             onClick={() => {
               handleOpen(true, 'rock');
-              setAb(true);
             }}
-            className={ab && 'animateRockRegular'}
+            className={instantChange && 'animateRockRegular'}
             cursor='pointer'
           >
             <Box
@@ -115,7 +108,7 @@ const LayoutRegular = () => {
           </Box>
         </Box>
       )}
-      {isOpen[0] && <Game />}
+      {isGameOpen[0] && <Game />}
     </Flex>
   );
 };

@@ -17,8 +17,8 @@ import { useLocation } from 'react-router-dom';
 const Game = () => {
   const [randomElement, setRandomElement] = useState(null);
   const [winner, setWinner] = useState(null);
-  const { handleCount, handleOpen, isOpen } = useContext(GlobalContext);
-  const data = isOpen[1];
+  const { handleCount, handleOpen, isGameOpen } = useContext(GlobalContext);
+  const data = isGameOpen[1];
 
   const [isMobileSize] = useMediaQuery('(max-width: 768px)');
 
@@ -32,7 +32,7 @@ const Game = () => {
     isRegular
       ? setPosibilityArray(['paper', 'rock', 'scissor'])
       : setPosibilityArray(['paper', 'rock', 'scissor', 'spock', 'lizard']);
-  }, [location]);
+  }, [location, isRegular]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -101,7 +101,7 @@ const Game = () => {
         handleCount('draw');
       }
     }
-  }, [randomElement]);
+  }, [randomElement, data]);
 
   return (
     <Flex

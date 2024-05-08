@@ -25,7 +25,9 @@ import { IoHome } from 'react-icons/io5';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { winningCount, handleCount } = useContext(GlobalContext);
+  const { winningCount, handleCount, instantChange } = useContext(
+    GlobalContext
+  );
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -92,6 +94,7 @@ function App() {
             zIndex='1'
             alignItems='center'
             onClick={() => navigate('/')}
+            className={instantChange ? 'opactiyDecrease' : 'opactiyIncrease'}
           >
             <Icon as={IoHome} />
           </Flex>

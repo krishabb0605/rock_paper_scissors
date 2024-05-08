@@ -13,71 +13,73 @@ const Selection = () => {
         justifyContent='space-evenly'
         color='white'
         h='100%'
-        flexDir={{ base: 'column', md: 'row' }}
+        flexDir={{ base: 'column', xl: 'row' }}
       >
-        <NavLink to='/regular'>
-          <Flex
-            flexDir='column'
-            gap={{ base: '0px', md: '120px' }}
-            alignItems='center'
-          >
+        <NavLink
+          to='/regular'
+          style={{ display: 'flex', alignItems: 'center', height: '90%' }}
+        >
+          <Box pos='relative'>
             <Text
+              pos='absolute'
+              top='50%'
+              left='50%'
+              transform='translate(-50%,-130%)'
+              width='fit-content'
+              height='fit-content'
               padding='8px 40px'
               fontWeight='600'
-              bg='white'
-              color='game.text.dark'
+              color='white'
               borderRadius='8px'
               fontSize={{ base: '16px' }}
               zIndex='1'
-              display={{ base: 'none', md: 'block' }}
             >
               Regular
             </Text>
-
-            <Box>
-              <LayoutRegular />
-            </Box>
-          </Flex>
+            <LayoutRegular />
+          </Box>
         </NavLink>
 
-        <Box>
-          <Text
-            padding='8px 40px'
+        <Box
+          p='4px 20px'
+          border='3px solid'
+          borderColor='game.text.header'
+          borderRadius='8px'
+        >
+          <Flex
             fontWeight='600'
-            border='3px solid'
-            borderColor='game.text.header'
-            borderRadius='8px'
             fontSize={{ base: '16px' }}
             zIndex='1'
             textTransform='uppercase'
           >
-            Choose game
-          </Text>
+            <marquee>Choose game</marquee>
+          </Flex>
         </Box>
 
-        <NavLink to='/bonus'>
-          <Flex
-            flexDir='column'
-            gap={{ base: '0px', md: '120px' }}
-            alignItems='center'
-          >
+        <NavLink
+          to='/bonus'
+          style={{ display: 'flex', alignItems: 'center', height: '90%' }}
+        >
+          <Box pos='relative'>
             <Text
+              pos='absolute'
+              top='50%'
+              left='50%'
+              transform='translate(-50%,0)'
+              width='fit-content'
+              height='fit-content'
               padding='8px 40px'
               fontWeight='600'
-              bg='white'
-              color='game.text.dark'
+              color='white'
               borderRadius='8px'
               fontSize={{ base: '16px' }}
               zIndex='1'
-              display={{ base: 'none', md: 'block' }}
             >
               Bonus
             </Text>
 
-            <Box>
-              <LayoutBonus />
-            </Box>
-          </Flex>
+            <LayoutBonus />
+          </Box>
         </NavLink>
       </Flex>
     </Box>
